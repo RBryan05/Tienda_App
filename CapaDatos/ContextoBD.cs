@@ -10,7 +10,7 @@ namespace CapaDatos
     public partial class ContextoBD : DbContext
     {
         public ContextoBD()
-            : base(ConfigurationManager.ConnectionStrings["ContextoBD"].ConnectionString)
+            : base("name=ContextoBD")
         {
         }
 
@@ -20,9 +20,7 @@ namespace CapaDatos
         //}
 
         public virtual DbSet<Venta> Ventas { get; set; }
-
         public virtual DbSet<Producto> Productos { get; set; }
-
         public  virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
     }
 }
