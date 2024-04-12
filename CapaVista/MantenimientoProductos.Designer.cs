@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.gbxFiltro = new System.Windows.Forms.GroupBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnNuevoProducto = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +72,10 @@
             this.dgvProductos.Size = new System.Drawing.Size(1263, 559);
             this.dgvProductos.TabIndex = 1;
             // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataSource = typeof(CapaEntidades.Producto);
+            // 
             // btnNuevoProducto
             // 
             this.btnNuevoProducto.Location = new System.Drawing.Point(47, 788);
@@ -91,10 +95,6 @@
             this.btnVolver.Text = "Atras";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // productoBindingSource
-            // 
-            this.productoBindingSource.DataSource = typeof(CapaEntidades.Producto);
             // 
             // productoIdDataGridViewTextBoxColumn
             // 
@@ -123,7 +123,7 @@
             // precioUnitarioDataGridViewTextBoxColumn
             // 
             this.precioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "PrecioUnitario";
-            this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "PrecioUnitario";
+            this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "Precio Unitario";
             this.precioUnitarioDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.precioUnitarioDataGridViewTextBoxColumn.Name = "precioUnitarioDataGridViewTextBoxColumn";
             this.precioUnitarioDataGridViewTextBoxColumn.Width = 150;
