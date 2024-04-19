@@ -25,5 +25,11 @@ namespace CapaLogica
 
             return _productoDal.Leer();
         }
+
+        public Producto ObtenerProductoPorId(int id)
+        {
+            _productoDal = new ProductoDAL();
+            return _productoDal.LeerPorId(id);
+        }
     }
 }

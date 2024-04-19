@@ -28,21 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.cmbNombreProducto = new System.Windows.Forms.ComboBox();
+            this.txtCodigoProducto = new System.Windows.Forms.TextBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtExistencias = new System.Windows.Forms.TextBox();
+            this.dgvVenta = new System.Windows.Forms.DataGridView();
+            this.txtAgregar = new System.Windows.Forms.Button();
+            this.btnProcesar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.txtMontoTotal = new System.Windows.Forms.TextBox();
+            this.RegistroVentaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.VentaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.ProductoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.detalleVentaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RegistroVentaBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VentaBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,72 +95,88 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Cantidad";
             // 
-            // comboBox1
+            // cmbNombreProducto
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(659, 31);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(265, 35);
-            this.comboBox1.TabIndex = 4;
+            this.cmbNombreProducto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbNombreProducto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbNombreProducto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ProductoBindingSource, "Nombre", true));
+            this.cmbNombreProducto.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.ProductoBindingSource, "ProductoId", true));
+            this.cmbNombreProducto.DataSource = this.ProductoBindingSource;
+            this.cmbNombreProducto.DisplayMember = "Nombre";
+            this.cmbNombreProducto.FormattingEnabled = true;
+            this.cmbNombreProducto.Location = new System.Drawing.Point(659, 31);
+            this.cmbNombreProducto.Name = "cmbNombreProducto";
+            this.cmbNombreProducto.Size = new System.Drawing.Size(265, 35);
+            this.cmbNombreProducto.TabIndex = 4;
+            this.cmbNombreProducto.ValueMember = "ProductoId";
             // 
-            // textBox1
+            // txtCodigoProducto
             // 
-            this.textBox1.Location = new System.Drawing.Point(227, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(168, 35);
-            this.textBox1.TabIndex = 5;
+            this.txtCodigoProducto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ProductoBindingSource, "ProductoId", true));
+            this.txtCodigoProducto.Location = new System.Drawing.Point(227, 31);
+            this.txtCodigoProducto.Name = "txtCodigoProducto";
+            this.txtCodigoProducto.Size = new System.Drawing.Size(168, 35);
+            this.txtCodigoProducto.TabIndex = 5;
+            this.txtCodigoProducto.TextChanged += new System.EventHandler(this.txtCodigoProducto_TextChanged);
             // 
-            // textBox2
+            // txtCantidad
             // 
-            this.textBox2.Location = new System.Drawing.Point(227, 139);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(168, 35);
-            this.textBox2.TabIndex = 6;
+            this.txtCantidad.Location = new System.Drawing.Point(227, 126);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(168, 35);
+            this.txtCantidad.TabIndex = 6;
             // 
-            // textBox3
+            // txtExistencias
             // 
-            this.textBox3.Location = new System.Drawing.Point(659, 128);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(268, 35);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtExistencias.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ProductoBindingSource, "Existencias", true));
+            this.txtExistencias.Location = new System.Drawing.Point(659, 125);
+            this.txtExistencias.Name = "txtExistencias";
+            this.txtExistencias.Size = new System.Drawing.Size(268, 35);
+            this.txtExistencias.TabIndex = 7;
+            this.txtExistencias.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // dataGridView1
+            // dgvVenta
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 266);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(894, 181);
-            this.dataGridView1.TabIndex = 8;
+            this.dgvVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigo,
+            this.Nombre,
+            this.Precio,
+            this.Cantidad,
+            this.SubTotal});
+            this.dgvVenta.Location = new System.Drawing.Point(33, 266);
+            this.dgvVenta.Name = "dgvVenta";
+            this.dgvVenta.RowHeadersWidth = 62;
+            this.dgvVenta.RowTemplate.Height = 28;
+            this.dgvVenta.Size = new System.Drawing.Size(894, 181);
+            this.dgvVenta.TabIndex = 8;
             // 
-            // button1
+            // txtAgregar
             // 
-            this.button1.Location = new System.Drawing.Point(798, 204);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 39);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtAgregar.Location = new System.Drawing.Point(798, 204);
+            this.txtAgregar.Name = "txtAgregar";
+            this.txtAgregar.Size = new System.Drawing.Size(126, 39);
+            this.txtAgregar.TabIndex = 9;
+            this.txtAgregar.Text = "Agregar";
+            this.txtAgregar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnProcesar
             // 
-            this.button2.Location = new System.Drawing.Point(33, 572);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 54);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnProcesar.Location = new System.Drawing.Point(33, 572);
+            this.btnProcesar.Name = "btnProcesar";
+            this.btnProcesar.Size = new System.Drawing.Size(129, 54);
+            this.btnProcesar.TabIndex = 10;
+            this.btnProcesar.Text = "Procesa";
+            this.btnProcesar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnVolver
             // 
-            this.button3.Location = new System.Drawing.Point(798, 572);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(129, 54);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnVolver.Location = new System.Drawing.Point(798, 572);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(129, 54);
+            this.btnVolver.TabIndex = 11;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -157,28 +187,80 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Monto Total";
             // 
-            // textBox4
+            // txtMontoTotal
             // 
-            this.textBox4.Location = new System.Drawing.Point(749, 497);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(178, 35);
-            this.textBox4.TabIndex = 13;
+            this.txtMontoTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VentaBindingSource1, "Total", true));
+            this.txtMontoTotal.Location = new System.Drawing.Point(749, 497);
+            this.txtMontoTotal.Name = "txtMontoTotal";
+            this.txtMontoTotal.Size = new System.Drawing.Size(178, 35);
+            this.txtMontoTotal.TabIndex = 13;
+            // 
+            // RegistroVentaBindingSource1
+            // 
+            this.RegistroVentaBindingSource1.DataSource = typeof(CapaEntidades.DetalleVenta);
+            // 
+            // VentaBindingSource1
+            // 
+            this.VentaBindingSource1.DataSource = typeof(CapaEntidades.Venta);
+            // 
+            // ProductoBindingSource
+            // 
+            this.ProductoBindingSource.DataSource = typeof(CapaEntidades.Producto);
+            // 
+            // detalleVentaBindingSource
+            // 
+            this.detalleVentaBindingSource.DataSource = typeof(CapaEntidades.DetalleVenta);
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 8;
+            this.Codigo.Name = "Codigo";
+            this.Codigo.Width = 150;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 8;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 150;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.MinimumWidth = 8;
+            this.Precio.Name = "Precio";
+            this.Precio.Width = 150;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 8;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 150;
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.HeaderText = "Sub Total";
+            this.SubTotal.MinimumWidth = 8;
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.Width = 150;
             // 
             // RegistroVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(978, 682);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtMontoTotal);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.btnProcesar);
+            this.Controls.Add(this.txtAgregar);
+            this.Controls.Add(this.dgvVenta);
+            this.Controls.Add(this.txtExistencias);
+            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.txtCodigoProducto);
+            this.Controls.Add(this.cmbNombreProducto);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -186,8 +268,13 @@
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "RegistroVenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tienda | Registro Venta";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RegistroVentaBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VentaBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,15 +286,24 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cmbNombreProducto;
+        private System.Windows.Forms.TextBox txtCodigoProducto;
+        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.TextBox txtExistencias;
+        private System.Windows.Forms.DataGridView dgvVenta;
+        private System.Windows.Forms.Button txtAgregar;
+        private System.Windows.Forms.Button btnProcesar;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtMontoTotal;
+        private System.Windows.Forms.BindingSource RegistroVentaBindingSource1;
+        private System.Windows.Forms.BindingSource ProductoBindingSource;
+        private System.Windows.Forms.BindingSource VentaBindingSource1;
+        private System.Windows.Forms.BindingSource detalleVentaBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
     }
 }

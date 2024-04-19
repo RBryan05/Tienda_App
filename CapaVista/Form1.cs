@@ -31,7 +31,8 @@ namespace CapaVista
 
         private void MnRegistroVentas_Click(object sender, EventArgs e)
         {
-
+            RegistroVenta objregistroVenta = new RegistroVenta();
+            objregistroVenta.ShowDialog();
         }
     }
 }

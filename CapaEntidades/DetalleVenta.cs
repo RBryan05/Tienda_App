@@ -16,7 +16,7 @@ namespace CapaEntidades
         [Required]
         public int Cantidad { get; set; }
         [Required]
-        public  decimal Precio { get; set; }
+        public decimal Precio { get; set; }
         [Required]
         public int ProductoId { get; set; }
         [ForeignKey("ProductoId")]
