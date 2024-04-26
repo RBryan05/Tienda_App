@@ -34,28 +34,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbNombreProducto = new System.Windows.Forms.ComboBox();
+            this.ProductoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.txtExistencias = new System.Windows.Forms.TextBox();
-            this.dgvVenta = new System.Windows.Forms.DataGridView();
+            this.dgvDetalleVenta = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAgregar = new System.Windows.Forms.Button();
             this.btnProcesar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtMontoTotal = new System.Windows.Forms.TextBox();
-            this.RegistroVentaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.VentaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.ProductoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RegistroVentaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.detalleVentaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVenta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RegistroVentaBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VentaBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VentaBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RegistroVentaBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +89,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(111, 139);
+            this.label4.Location = new System.Drawing.Point(111, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 27);
             this.label4.TabIndex = 3;
@@ -99,8 +99,6 @@
             // 
             this.cmbNombreProducto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbNombreProducto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbNombreProducto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ProductoBindingSource, "Nombre", true));
-            this.cmbNombreProducto.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.ProductoBindingSource, "ProductoId", true));
             this.cmbNombreProducto.DataSource = this.ProductoBindingSource;
             this.cmbNombreProducto.DisplayMember = "Nombre";
             this.cmbNombreProducto.FormattingEnabled = true;
@@ -109,6 +107,10 @@
             this.cmbNombreProducto.Size = new System.Drawing.Size(265, 35);
             this.cmbNombreProducto.TabIndex = 4;
             this.cmbNombreProducto.ValueMember = "ProductoId";
+            // 
+            // ProductoBindingSource
+            // 
+            this.ProductoBindingSource.DataSource = typeof(CapaEntidades.Producto);
             // 
             // txtCodigoProducto
             // 
@@ -128,28 +130,75 @@
             // 
             // txtExistencias
             // 
+            this.txtExistencias.BackColor = System.Drawing.SystemColors.Window;
             this.txtExistencias.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ProductoBindingSource, "Existencias", true));
             this.txtExistencias.Location = new System.Drawing.Point(659, 125);
             this.txtExistencias.Name = "txtExistencias";
+            this.txtExistencias.ReadOnly = true;
             this.txtExistencias.Size = new System.Drawing.Size(268, 35);
             this.txtExistencias.TabIndex = 7;
-            this.txtExistencias.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // dgvVenta
+            // dgvDetalleVenta
             // 
-            this.dgvVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDetalleVenta.AllowUserToAddRows = false;
+            this.dgvDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Nombre,
-            this.Precio,
             this.Cantidad,
+            this.Precio,
             this.SubTotal});
-            this.dgvVenta.Location = new System.Drawing.Point(33, 266);
-            this.dgvVenta.Name = "dgvVenta";
-            this.dgvVenta.RowHeadersWidth = 62;
-            this.dgvVenta.RowTemplate.Height = 28;
-            this.dgvVenta.Size = new System.Drawing.Size(894, 181);
-            this.dgvVenta.TabIndex = 8;
+            this.dgvDetalleVenta.Location = new System.Drawing.Point(33, 266);
+            this.dgvDetalleVenta.Name = "dgvDetalleVenta";
+            this.dgvDetalleVenta.RowHeadersWidth = 62;
+            this.dgvDetalleVenta.RowTemplate.Height = 28;
+            this.dgvDetalleVenta.Size = new System.Drawing.Size(894, 181);
+            this.dgvDetalleVenta.TabIndex = 8;
+            this.dgvDetalleVenta.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleVenta_CellValueChanged);
+            // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "Codigo";
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 8;
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Width = 150;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 8;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 150;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 8;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 150;
+            // 
+            // Precio
+            // 
+            this.Precio.DataPropertyName = "Precio";
+            this.Precio.HeaderText = "Precio";
+            this.Precio.MinimumWidth = 8;
+            this.Precio.Name = "Precio";
+            this.Precio.Width = 150;
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.DataPropertyName = "SubTotal";
+            this.SubTotal.HeaderText = "Sub Total";
+            this.SubTotal.MinimumWidth = 8;
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.ReadOnly = true;
+            this.SubTotal.Width = 150;
             // 
             // txtAgregar
             // 
@@ -159,6 +208,7 @@
             this.txtAgregar.TabIndex = 9;
             this.txtAgregar.Text = "Agregar";
             this.txtAgregar.UseVisualStyleBackColor = true;
+            this.txtAgregar.Click += new System.EventHandler(this.txtAgregar_Click);
             // 
             // btnProcesar
             // 
@@ -168,6 +218,7 @@
             this.btnProcesar.TabIndex = 10;
             this.btnProcesar.Text = "Procesa";
             this.btnProcesar.UseVisualStyleBackColor = true;
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
             // btnVolver
             // 
@@ -177,6 +228,7 @@
             this.btnVolver.TabIndex = 11;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // label5
             // 
@@ -195,56 +247,17 @@
             this.txtMontoTotal.Size = new System.Drawing.Size(178, 35);
             this.txtMontoTotal.TabIndex = 13;
             // 
-            // RegistroVentaBindingSource1
-            // 
-            this.RegistroVentaBindingSource1.DataSource = typeof(CapaEntidades.DetalleVenta);
-            // 
             // VentaBindingSource1
             // 
             this.VentaBindingSource1.DataSource = typeof(CapaEntidades.Venta);
             // 
-            // ProductoBindingSource
+            // RegistroVentaBindingSource1
             // 
-            this.ProductoBindingSource.DataSource = typeof(CapaEntidades.Producto);
+            this.RegistroVentaBindingSource1.DataSource = typeof(CapaEntidades.DetalleVenta);
             // 
             // detalleVentaBindingSource
             // 
             this.detalleVentaBindingSource.DataSource = typeof(CapaEntidades.DetalleVenta);
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.MinimumWidth = 8;
-            this.Codigo.Name = "Codigo";
-            this.Codigo.Width = 150;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.MinimumWidth = 8;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 150;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.MinimumWidth = 8;
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 150;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 8;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 150;
-            // 
-            // SubTotal
-            // 
-            this.SubTotal.HeaderText = "Sub Total";
-            this.SubTotal.MinimumWidth = 8;
-            this.SubTotal.Name = "SubTotal";
-            this.SubTotal.Width = 150;
             // 
             // RegistroVenta
             // 
@@ -256,7 +269,7 @@
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnProcesar);
             this.Controls.Add(this.txtAgregar);
-            this.Controls.Add(this.dgvVenta);
+            this.Controls.Add(this.dgvDetalleVenta);
             this.Controls.Add(this.txtExistencias);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.txtCodigoProducto);
@@ -270,10 +283,10 @@
             this.Name = "RegistroVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tienda | Registro Venta";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVenta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RegistroVentaBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VentaBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VentaBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RegistroVentaBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -290,7 +303,7 @@
         private System.Windows.Forms.TextBox txtCodigoProducto;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.TextBox txtExistencias;
-        private System.Windows.Forms.DataGridView dgvVenta;
+        private System.Windows.Forms.DataGridView dgvDetalleVenta;
         private System.Windows.Forms.Button txtAgregar;
         private System.Windows.Forms.Button btnProcesar;
         private System.Windows.Forms.Button btnVolver;
@@ -302,8 +315,8 @@
         private System.Windows.Forms.BindingSource detalleVentaBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
     }
 }

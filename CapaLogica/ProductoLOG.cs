@@ -3,6 +3,7 @@ using CapaEntidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,12 @@ namespace CapaLogica
             _productoDal = new ProductoDAL();
 
             return _productoDal.Guardar(producto, id, esActualizacion);
+        }
+
+        public int ActualizarProducto(Producto producto, int id)
+        {
+            _productoDal = new ProductoDAL();
+            return _productoDal.Guardar(producto, id, true);
         }
 
         public List<Producto> ObtenerProductos()

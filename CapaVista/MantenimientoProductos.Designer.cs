@@ -31,14 +31,18 @@
             this.components = new System.ComponentModel.Container();
             this.gbxFiltro = new System.Windows.Forms.GroupBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnNuevoProducto = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.productoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.existenciasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.estadoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
@@ -55,14 +59,17 @@
             // 
             // dgvProductos
             // 
+            this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.AutoGenerateColumns = false;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productoIdDataGridViewTextBoxColumn,
+            this.Codigo,
             this.nombreDataGridViewTextBoxColumn,
             this.descripcionDataGridViewTextBoxColumn,
             this.precioUnitarioDataGridViewTextBoxColumn,
             this.existenciasDataGridViewTextBoxColumn,
+            this.Editar,
+            this.Eliminar,
             this.estadoDataGridViewCheckBoxColumn});
             this.dgvProductos.DataSource = this.productoBindingSource;
             this.dgvProductos.Location = new System.Drawing.Point(47, 175);
@@ -71,10 +78,7 @@
             this.dgvProductos.RowTemplate.Height = 28;
             this.dgvProductos.Size = new System.Drawing.Size(1263, 559);
             this.dgvProductos.TabIndex = 1;
-            // 
-            // productoBindingSource
-            // 
-            this.productoBindingSource.DataSource = typeof(CapaEntidades.Producto);
+            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
             // btnNuevoProducto
             // 
@@ -96,13 +100,32 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // productoIdDataGridViewTextBoxColumn
+            // dataGridViewImageColumn1
             // 
-            this.productoIdDataGridViewTextBoxColumn.DataPropertyName = "ProductoId";
-            this.productoIdDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            this.productoIdDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.productoIdDataGridViewTextBoxColumn.Name = "productoIdDataGridViewTextBoxColumn";
-            this.productoIdDataGridViewTextBoxColumn.Width = 150;
+            this.dataGridViewImageColumn1.HeaderText = "Editar";
+            this.dataGridViewImageColumn1.Image = global::CapaVista.Properties.Resources.edit_v2;
+            this.dataGridViewImageColumn1.MinimumWidth = 8;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 150;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn2.Image = global::CapaVista.Properties.Resources.delete;
+            this.dataGridViewImageColumn2.MinimumWidth = 8;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Width = 150;
+            // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataSource = typeof(CapaEntidades.Producto);
+            // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "ProductoId";
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 8;
+            this.Codigo.Name = "Codigo";
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -118,7 +141,7 @@
             this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
             this.descripcionDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.Width = 150;
+            this.descripcionDataGridViewTextBoxColumn.Width = 250;
             // 
             // precioUnitarioDataGridViewTextBoxColumn
             // 
@@ -126,7 +149,7 @@
             this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "Precio Unitario";
             this.precioUnitarioDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.precioUnitarioDataGridViewTextBoxColumn.Name = "precioUnitarioDataGridViewTextBoxColumn";
-            this.precioUnitarioDataGridViewTextBoxColumn.Width = 150;
+            this.precioUnitarioDataGridViewTextBoxColumn.Width = 250;
             // 
             // existenciasDataGridViewTextBoxColumn
             // 
@@ -135,6 +158,22 @@
             this.existenciasDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.existenciasDataGridViewTextBoxColumn.Name = "existenciasDataGridViewTextBoxColumn";
             this.existenciasDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::CapaVista.Properties.Resources.edit_v2;
+            this.Editar.MinimumWidth = 8;
+            this.Editar.Name = "Editar";
+            this.Editar.Width = 150;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::CapaVista.Properties.Resources.delete;
+            this.Eliminar.MinimumWidth = 8;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Width = 150;
             // 
             // estadoDataGridViewCheckBoxColumn
             // 
@@ -172,11 +211,15 @@
         private System.Windows.Forms.Button btnNuevoProducto;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.BindingSource productoBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productoIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn existenciasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn estadoDataGridViewCheckBoxColumn;
     }
 }

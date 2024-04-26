@@ -117,37 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ProductoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>552, 17</value>
-  </metadata>
-  <metadata name="ProductoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>552, 17</value>
-  </metadata>
-  <metadata name="Codigo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Cantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Precio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="SubTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="VentaBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>317, 17</value>
-  </metadata>
-  <metadata name="VentaBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>317, 17</value>
-  </metadata>
-  <metadata name="RegistroVentaBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="detalleVentaBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>806, 17</value>
-  </metadata>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
+  </data>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
+  </data>
 </root>

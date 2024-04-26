@@ -59,6 +59,14 @@
     <Compile Include="Migrations\202404120006017_Prueba.Designer.cs">
       <DependentUpon>202404120006017_Prueba.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404221844261_Actualizacion.cs" />
+    <Compile Include="Migrations\202404221844261_Actualizacion.Designer.cs">
+      <DependentUpon>202404221844261_Actualizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404232250331_Correccion.cs" />
+    <Compile Include="Migrations\202404232250331_Correccion.Designer.cs">
+      <DependentUpon>202404232250331_Correccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProductoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,6 +85,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202404120006017_Prueba.resx">
       <DependentUpon>202404120006017_Prueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404221844261_Actualizacion.resx">
+      <DependentUpon>202404221844261_Actualizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404232250331_Correccion.resx">
+      <DependentUpon>202404232250331_Correccion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
