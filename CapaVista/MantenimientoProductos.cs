@@ -31,7 +31,15 @@ namespace CapaVista
         private void CargarProductos()
         {
             _productoLOG = new ProductoLOG();
-            dgvProductos.DataSource = _productoLOG.ObtenerProductos();
+
+            if (rdbActivos.Checked )
+            {
+                dgvProductos.DataSource = _productoLOG.ObtenerProductos();
+            }
+            else if (rdbInactivos.Checked )
+            {
+                dgvProductos.DataSource = _productoLOG.ObtenerProductos(true);
+            }  
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -51,6 +59,24 @@ namespace CapaVista
                     {
                         RegistroProducto objRegistroProducto = new RegistroProducto(id);
                         objRegistroProducto.ShowDialog();
+                        CargarProductos();
+                    }
+                    else if (dgvProductos.Columns[e.ColumnIndex].Name.Equals("Eliminar"))
+                    {
+                        _productoLOG = new ProductoLOG();
+                        int resultado = _productoLOG.EliminarProducto(id);
+                        CargarProductos();
+
+                        if (resultado > 0)
+                        {
+                            MessageBox.Show("Producto eliminado con Exito", "Tienda | Edicion Productos",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se logro eliminar el producto", "Tienda | Edicion Productos",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -59,6 +85,16 @@ namespace CapaVista
 
                 MessageBox.Show("Ocurrio un error");
             }
+        }
+
+        private void rdbActivos_CheckedChanged(object sender, EventArgs e)
+        {
+            CargarProductos();
+        }
+
+        private void rdbInactivos_CheckedChanged(object sender, EventArgs e)
+        {
+            CargarProductos();
         }
     }
 }

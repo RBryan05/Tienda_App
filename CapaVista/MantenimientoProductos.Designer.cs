@@ -31,11 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.gbxFiltro = new System.Windows.Forms.GroupBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnNuevoProducto = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gbxEstado = new System.Windows.Forms.GroupBox();
+            this.rdbInactivos = new System.Windows.Forms.RadioButton();
+            this.rdbActivos = new System.Windows.Forms.RadioButton();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,13 +49,14 @@
             this.estadoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
+            this.gbxEstado.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxFiltro
             // 
-            this.gbxFiltro.Location = new System.Drawing.Point(47, 39);
+            this.gbxFiltro.Location = new System.Drawing.Point(38, 39);
             this.gbxFiltro.Name = "gbxFiltro";
-            this.gbxFiltro.Size = new System.Drawing.Size(927, 100);
+            this.gbxFiltro.Size = new System.Drawing.Size(877, 100);
             this.gbxFiltro.TabIndex = 0;
             this.gbxFiltro.TabStop = false;
             this.gbxFiltro.Text = "Filtros por Producto";
@@ -72,13 +76,17 @@
             this.Eliminar,
             this.estadoDataGridViewCheckBoxColumn});
             this.dgvProductos.DataSource = this.productoBindingSource;
-            this.dgvProductos.Location = new System.Drawing.Point(47, 175);
+            this.dgvProductos.Location = new System.Drawing.Point(38, 180);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersWidth = 62;
             this.dgvProductos.RowTemplate.Height = 28;
-            this.dgvProductos.Size = new System.Drawing.Size(1263, 559);
+            this.dgvProductos.Size = new System.Drawing.Size(1289, 559);
             this.dgvProductos.TabIndex = 1;
             this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
+            // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataSource = typeof(CapaEntidades.Producto);
             // 
             // btnNuevoProducto
             // 
@@ -116,9 +124,40 @@
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.Width = 150;
             // 
-            // productoBindingSource
+            // gbxEstado
             // 
-            this.productoBindingSource.DataSource = typeof(CapaEntidades.Producto);
+            this.gbxEstado.Controls.Add(this.rdbInactivos);
+            this.gbxEstado.Controls.Add(this.rdbActivos);
+            this.gbxEstado.Location = new System.Drawing.Point(937, 39);
+            this.gbxEstado.Name = "gbxEstado";
+            this.gbxEstado.Size = new System.Drawing.Size(390, 100);
+            this.gbxEstado.TabIndex = 4;
+            this.gbxEstado.TabStop = false;
+            this.gbxEstado.Text = "Filtro por Estado";
+            // 
+            // rdbInactivos
+            // 
+            this.rdbInactivos.AutoSize = true;
+            this.rdbInactivos.Location = new System.Drawing.Point(212, 53);
+            this.rdbInactivos.Name = "rdbInactivos";
+            this.rdbInactivos.Size = new System.Drawing.Size(130, 31);
+            this.rdbInactivos.TabIndex = 1;
+            this.rdbInactivos.Text = "Inactivos";
+            this.rdbInactivos.UseVisualStyleBackColor = true;
+            this.rdbInactivos.CheckedChanged += new System.EventHandler(this.rdbInactivos_CheckedChanged);
+            // 
+            // rdbActivos
+            // 
+            this.rdbActivos.AutoSize = true;
+            this.rdbActivos.Checked = true;
+            this.rdbActivos.Location = new System.Drawing.Point(30, 53);
+            this.rdbActivos.Name = "rdbActivos";
+            this.rdbActivos.Size = new System.Drawing.Size(112, 31);
+            this.rdbActivos.TabIndex = 0;
+            this.rdbActivos.TabStop = true;
+            this.rdbActivos.Text = "Activos";
+            this.rdbActivos.UseVisualStyleBackColor = true;
+            this.rdbActivos.CheckedChanged += new System.EventHandler(this.rdbActivos_CheckedChanged);
             // 
             // Codigo
             // 
@@ -126,6 +165,7 @@
             this.Codigo.HeaderText = "Codigo";
             this.Codigo.MinimumWidth = 8;
             this.Codigo.Name = "Codigo";
+            this.Codigo.Width = 150;
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -165,7 +205,7 @@
             this.Editar.Image = global::CapaVista.Properties.Resources.edit_v2;
             this.Editar.MinimumWidth = 8;
             this.Editar.Name = "Editar";
-            this.Editar.Width = 150;
+            this.Editar.Width = 125;
             // 
             // Eliminar
             // 
@@ -189,6 +229,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1361, 896);
+            this.Controls.Add(this.gbxEstado);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnNuevoProducto);
             this.Controls.Add(this.dgvProductos);
@@ -200,6 +241,8 @@
             this.Text = "Tienda | Mantenimiento de Productos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
+            this.gbxEstado.ResumeLayout(false);
+            this.gbxEstado.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -213,6 +256,9 @@
         private System.Windows.Forms.BindingSource productoBindingSource;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.GroupBox gbxEstado;
+        private System.Windows.Forms.RadioButton rdbInactivos;
+        private System.Windows.Forms.RadioButton rdbActivos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
